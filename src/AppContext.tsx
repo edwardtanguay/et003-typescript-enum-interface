@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { createContext } from 'react';
 import axios from 'axios';
-import { ITechBook } from './interfaces';
+import { ITechBook, Language } from './interfaces';
 import * as tools from './tools';
 
 const techBooksUrl = 'https://edwardtanguay.vercel.app/share/techBooks.json';
@@ -21,6 +21,19 @@ export const AppProvider: React.FC<IAppProvider> = ({ children }) => {
 	const appTitle = 'Tech Book Site';
 	const [techBooks, setTechBooks] = useState<ITechBook[]>([]);
 
+	const getLanguage = (language: string) => {
+		switch (language) {
+			case '':
+				return Language.English;
+			case 'german':
+				return Language.German;
+			case 'french':
+				return Language.French;
+			default:
+				return Language.Unknown;	
+		}
+	}
+
 	useEffect(() => {
 		(async () => {
 			const rawTechBooks = (await axios.get(techBooksUrl)).data;
@@ -31,7 +44,7 @@ export const AppProvider: React.FC<IAppProvider> = ({ children }) => {
 					idCode: rawTechBook.idCode,
 					title: rawTechBook.title,
 					description: rawTechBook.description,
-					language: rawTechBook.language == '' ? 'English' : tools.uppercaseFirstLetter(rawTechBook.language),
+					language: getLanguage(rawTechBook.language),
 				};
 				_techBooks.push(_techBook);
 			});

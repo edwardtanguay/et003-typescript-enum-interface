@@ -3,5 +3,12 @@ export interface ITechBook {
 	idCode: string;
 	title: string;
 	description: string;
-	language: string; // TODO: change to enum
+	language: Language
+}
+
+export enum Language {
+	English = "English",
+	German = "German",
+	French = "French",
+	Unknown = "Unknown"
 }
