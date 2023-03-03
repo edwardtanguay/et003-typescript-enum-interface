@@ -15,6 +15,7 @@ export const PageTechBooks = () => {
 					return (
 						<div className="techBook" key={techBook.id}>
 							<div className="title">{techBook.title}</div>
+							<div className="language">The language is: {techBook.language}</div>
 						</div>
 					)
 				})}

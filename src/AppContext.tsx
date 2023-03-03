@@ -22,7 +22,19 @@ export const AppProvider: React.FC<IAppProvider> = ({ children }) => {
 
 	useEffect(() => {
 		(async () => {
-			setTechBooks((await axios.get(techBooksUrl)).data);
+			const rawTechBooks = (await axios.get(techBooksUrl)).data;
+			const _techBooks: ITechBook[] = [];
+			rawTechBooks.forEach((rawTechBook: any) => {
+				const _techBook: ITechBook = {
+					id: rawTechBook.id,
+					idCode: rawTechBook.idCode,
+					title: rawTechBook.title,
+					description: rawTechBook.description,
+					language: rawTechBook.language,
+				};
+				_techBooks.push(_techBook);
+			});
+			setTechBooks(_techBooks);
 		})();
 	}, []);
 
@@ -30,7 +42,7 @@ export const AppProvider: React.FC<IAppProvider> = ({ children }) => {
 		<AppContext.Provider
 			value={{
 				appTitle,
-				techBooks
+				techBooks,
 			}}
 		>
 			{children}
