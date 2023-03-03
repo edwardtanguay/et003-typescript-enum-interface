@@ -3,7 +3,7 @@ import { AppContext } from '../AppContext';
 import { Helmet } from 'react-helmet';
 
 export const PageTechBooks = () => {
-	const { appTitle } = useContext(AppContext);
+	const { appTitle, techBooks } = useContext(AppContext);
 
 	return (
 		<div className="pageTechBooks">
@@ -11,7 +11,13 @@ export const PageTechBooks = () => {
 				<title>{appTitle} - Tech Books</title>
 			</Helmet>
 			<div className="content">
-				<p>tech books are coming here...</p>
+				{techBooks.map(techBook => {
+					return (
+						<div className="techBook" key={techBook.id}>
+							<div className="title">{techBook.title}</div>
+						</div>
+					)
+				})}
 			</div>
 		</div>
 	);
