@@ -1,16 +1,7 @@
-export interface IJob {
+export interface ITechBook {
 	id: number;
-	title: string;
-	company: string;
-	url: string;
-	description: string;
-	skillList: string;
-	publicationDate: string;
-}
-
-export interface ISkill {
 	idCode: string;
-	name: string;
-	url: string;
+	title: string;
 	description: string;
+	language: string; // TODO: change to enum
 }

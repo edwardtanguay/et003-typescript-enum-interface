@@ -8,7 +8,7 @@ export const PageTechBooks = () => {
 	return (
 		<div className="pageTechBooks">
 			<Helmet>
-				<title>{appTitle} - Info</title>
+				<title>{appTitle} - Tech Books</title>
 			</Helmet>
 			<div className="content">
 				<p>tech books are coming here...</p>

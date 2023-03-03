@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react';
 import { createContext } from 'react';
 import axios from 'axios';
-import { IJob, ISkill } from './interfaces';
+import { ITechBook } from './interfaces';
 
-const jobsUrl = 'https://edwardtanguay.vercel.app/share/jobs.json';
-const skillsUrl = 'https://edwardtanguay.vercel.app/share/skills.json';
+const techBooksUrl = 'https://edwardtanguay.vercel.app/share/techBooks.json';
 
 interface IAppContext {
 	appTitle: string;
-	jobs: IJob[];
-	skills: ISkill[];
+	techBooks: ITechBook[];
 }
 
 interface IAppProvider {
@@ -19,19 +17,12 @@ interface IAppProvider {
 export const AppContext = createContext<IAppContext>({} as IAppContext);
 
 export const AppProvider: React.FC<IAppProvider> = ({ children }) => {
-	const appTitle = 'Info Site';
-	const [jobs, setJobs] = useState<IJob[]>([]);
-	const [skills, setSkills] = useState<ISkill[]>([]);
+	const appTitle = 'Tech Book Site';
+	const [techBooks, setTechBooks] = useState<ITechBook[]>([]);
 
 	useEffect(() => {
 		(async () => {
-			setJobs((await axios.get(jobsUrl)).data);
-		})();
-	}, []);
-
-	useEffect(() => {
-		(async () => {
-			setSkills((await axios.get(skillsUrl)).data);
+			setTechBooks((await axios.get(techBooksUrl)).data);
 		})();
 	}, []);
 
@@ -39,8 +30,7 @@ export const AppProvider: React.FC<IAppProvider> = ({ children }) => {
 		<AppContext.Provider
 			value={{
 				appTitle,
-				jobs,
-				skills
+				techBooks
 			}}
 		>
 			{children}

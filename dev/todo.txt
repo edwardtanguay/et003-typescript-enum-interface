@@ -1,1 +1,7 @@
-- .. change site so that it loads techbooks: https://edwardtanguay.vercel.app/share/techBooks.json
+- x change site so that it loads techbooks: https://edwardtanguay.vercel.app/share/techBooks.json
+- .. change appContext to load techbooks instead of jobs/skills
+- show techbooks on techbooks page and on welcome page (how many)
+
+
+
+- replace appTitle in Weclome with AppContext variable
