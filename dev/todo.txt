@@ -1,7 +1,10 @@
 - x change site so that it loads techbooks: https://edwardtanguay.vercel.app/share/techBooks.json
 - x change appContext to load techbooks instead of jobs/skills
 - x show techboosk on welcome page (how many)
-- .. show techbooks on techbooks page
+- x show techbooks on techbooks page
+- .. solve language issue
+	- x with strings
+	- .. with enums
 
 
 

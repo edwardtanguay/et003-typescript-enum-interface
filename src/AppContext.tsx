@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { createContext } from 'react';
 import axios from 'axios';
 import { ITechBook } from './interfaces';
+import * as tools from './tools';
 
 const techBooksUrl = 'https://edwardtanguay.vercel.app/share/techBooks.json';
 
@@ -30,7 +31,7 @@ export const AppProvider: React.FC<IAppProvider> = ({ children }) => {
 					idCode: rawTechBook.idCode,
 					title: rawTechBook.title,
 					description: rawTechBook.description,
-					language: rawTechBook.language,
+					language: rawTechBook.language == '' ? 'English' : tools.uppercaseFirstLetter(rawTechBook.language),
 				};
 				_techBooks.push(_techBook);
 			});
